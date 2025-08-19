@@ -1,0 +1,11 @@
+Funciones públicas del módulo cadenas_util.py:
+- normalizar(texto): limpia y pone en minúsculas
+- es_email_valido(email): verifica estructura simple de un email
+- formatear_nombre(nombre): capitaliza correctamente los nombres
+- obtener_iniciales(nombre): retorna iniciales en mayúsculas
+
+Decisión del módulo:
+- Elegí separar este módulo para agrupar funciones relacionadas al manejo de texto, permitiendo reutilización en otros scripts y mejor mantenimiento del código.
+
+Caso límite probado:
+- obtener_iniciales con cadena vacía → lanza ValueError controlado.
