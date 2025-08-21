@@ -1,0 +1,8 @@
+id,nombre,categoria,precio,stock,fecha
+1,Laptop,Electronica,1200,10,2023-07-01
+2,Celular,Electronica,800,15,2023-07-02
+3,TV,Electronica,1500,8,2023-07-02
+4,Mouse,Accesorios,20,200,2023-07-03
+5,Teclado,Accesorios,50,150,2023-07-03
+6,Cámara,Electronica,700,,2023-07-04
+7,Libro,Educacion,30,100,2023-07-04
