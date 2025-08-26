@@ -1,16 +1,28 @@
-# This is a sample Python script.
+import csv
 
-# Press Mayús+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+# Ruta relativa al archivo CSV
+CSV_PATH = 'parte_b/productos.csv'
 
+# Validación simple: precio > 0 y stock >= 0
+def validar_producto(producto):
+    try:
+        precio = float(producto['precio'])
+        stock = int(producto['stock'])
+        return precio > 0 and stock >= 0
+    except ValueError:
+        return False
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def cargar_productos(path):
+    productos_validos = []
+    with open(path, newline='', encoding='utf-8') as csvfile:
+        lector = csv.DictReader(csvfile)
+        for fila in lector:
+            if validar_producto(fila):
+                productos_validos.append(fila)
+    return productos_validos
 
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    productos = cargar_productos(CSV_PATH)
+    print("📦 Productos con stock válido:")
+    for p in productos:
+        print(f"- {p['nombre']}: ${p['precio']} ({p['stock']} unidades)")
