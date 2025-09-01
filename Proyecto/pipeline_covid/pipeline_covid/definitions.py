@@ -1,23 +1,7 @@
 from dagster import Definitions, load_assets_from_modules
-
-from pipeline_covid import assets
-
-all_assets = load_assets_from_modules([assets])
-
-from .leer_datos import (
-    leer_datos,
-    datos_procesados,
-    metrica_incidencia_7d,
-    metrica_factor_crec_7d,
-    reporte_excel_covid
-)
+from . import assets  # todos tus assets y checks están en pipeline_covid/assets.py
 
 defs = Definitions(
-    assets=[
-        leer_datos,
-        datos_procesados,
-        metrica_incidencia_7d,
-        metrica_factor_crec_7d,
-        reporte_excel_covid
-    ]
+    assets=load_assets_from_modules([assets]),
+    asset_checks=[assets.chequeos_entrada],  # solo el check que SÍ existe
 )
